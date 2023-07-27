@@ -15,11 +15,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddGrpc();
 builder.Services.AddSingleton<SecertService>();
-builder.Services.AddDbContext<PostgresContext>(options =>
+builder.Services.AddDbContext<PostgresContext>((serviceProvider, options) =>
 {
-    // var secertService = builder.Services.BuildServiceProvider().GetService<SecertService>();
-
-    options.UseNpgsql(builder.Configuration.GetValue<string>("POSTGRESQL_CONNECTSTRING"));
+    string connectionString= PostgreSqlTcp.NewPostgreSqlTCPConnectionString().ConnectionString;
+    options.UseNpgsql(connectionString);
 });
 var app = builder.Build();
 
