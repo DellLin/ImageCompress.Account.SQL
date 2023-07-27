@@ -17,8 +17,9 @@ builder.Services.AddGrpc();
 builder.Services.AddSingleton<SecertService>();
 builder.Services.AddDbContext<PostgresContext>(options =>
 {
-    var secertService = builder.Services.BuildServiceProvider().GetService<SecertService>();
-    options.UseNpgsql(secertService!.GetSecret("imagecompress-393703", "postgresql-connectstring"));
+    // var secertService = builder.Services.BuildServiceProvider().GetService<SecertService>();
+
+    options.UseNpgsql(builder.Configuration.GetValue<string>("POSTGRESQL_CONNECTSTRING"));
 });
 var app = builder.Build();
 
