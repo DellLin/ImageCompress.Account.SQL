@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.WebHost.ConfigureKestrel(options =>
-{
-    // Setup a HTTP/2 endpoint without TLS.
-    options.ListenLocalhost(5243, o => o.Protocols =
-        HttpProtocols.Http2);
-});
+// builder.WebHost.ConfigureKestrel(options =>
+// {
+//     // Setup a HTTP/2 endpoint without TLS.
+//     options.ListenLocalhost(5243, o => o.Protocols =
+//         HttpProtocols.Http2);
+// });
 
 // Add services to the container.
 builder.Services.AddGrpc();
