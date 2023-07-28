@@ -22,6 +22,7 @@ public class PostgreSqlTcp
                 SslPassword = Environment.GetEnvironmentVariable("DB_CLIENT_KEY"),
                 // The Cloud SQL proxy provides encryption between the proxy and instance.
                 // TrustServerCertificate=true,
+                TrustServerCertificate = false,
                 SslMode = SslMode.VerifyCA,
             };
             connectionString.Pooling = true;
