@@ -17,11 +17,10 @@ public class PostgreSqlTcp
                 Username = Environment.GetEnvironmentVariable("DB_USER"), // e.g. 'my-db-user'
                 Password = Environment.GetEnvironmentVariable("DB_PASS"), // e.g. 'my-db-password'
                 Database = Environment.GetEnvironmentVariable("DB_NAME"), // e.g. 'my-database'
-                // RootCertificate = Environment.GetEnvironmentVariable("DB_SERVER_CA"),
-                // SslCertificate = Environment.GetEnvironmentVariable("DB_CLIENT_CERT"),
-                // SslPassword = Environment.GetEnvironmentVariable("DB_CLIENT_KEY"),
+                RootCertificate = Environment.GetEnvironmentVariable("DB_SERVER_CA"),
+                SslCertificate = Environment.GetEnvironmentVariable("DB_CLIENT_CERT"),
+                SslPassword = Environment.GetEnvironmentVariable("DB_CLIENT_KEY"),
                 // The Cloud SQL proxy provides encryption between the proxy and instance.
-                TrustServerCertificate = true,
                 SslMode = SslMode.Require,
             };
             connectionString.Pooling = true;
