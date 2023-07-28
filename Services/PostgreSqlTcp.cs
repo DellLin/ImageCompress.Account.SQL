@@ -19,7 +19,7 @@ public class PostgreSqlTcp
                 Database = Environment.GetEnvironmentVariable("DB_NAME"), // e.g. 'my-database'
 
                 // The Cloud SQL proxy provides encryption between the proxy and instance.
-                SslMode = SslMode.Require,
+                SslMode = SslMode.VerifyCA,
             };
             connectionString.Pooling = true;
             // Specify additional properties here.
