@@ -5,6 +5,7 @@ public class PostgreSqlTcp
         public static NpgsqlConnectionStringBuilder NewPostgreSqlTCPConnectionString()
         {
             System.Console.WriteLine(Environment.GetEnvironmentVariable("INSTANCE_CONNECTION_NAME"));
+            System.Console.WriteLine(Environment.GetEnvironmentVariable("INSTANCE_HOST"));
             System.Console.WriteLine(Environment.GetEnvironmentVariable("DB_USER"));
             System.Console.WriteLine(Environment.GetEnvironmentVariable("DB_PASS"));
             System.Console.WriteLine(Environment.GetEnvironmentVariable("DB_NAME"));
@@ -17,7 +18,7 @@ public class PostgreSqlTcp
                 // Cloud Secret Manager (https://cloud.google.com/secret-manager) to help
                 // keep secrets safe.
                 // Host = Environment.GetEnvironmentVariable("INSTANCE_CONNECTION_NAME"),     // e.g. '127.0.0.1'
-                Host = Environment.GetEnvironmentVariable("INSTANCE_CONNECTION_NAME"),
+                Host = Environment.GetEnvironmentVariable("INSTANCE_HOST"),
                 // Set Host to 'cloudsql' when deploying to App Engine Flexible environment
                 Username = Environment.GetEnvironmentVariable("DB_USER"), // e.g. 'my-db-user'
                 Password = Environment.GetEnvironmentVariable("DB_PASS"), // e.g. 'my-db-password'
