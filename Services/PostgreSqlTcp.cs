@@ -35,12 +35,13 @@ public class PostgreSqlTcp
             // For deployments that connect directly to a Cloud SQL instance without
             // using the Cloud SQL Proxy, configuring SSL certificates will ensure the
             // connection is encrypted.
-            // if (Environment.GetEnvironmentVariable("DB_CERT") != null)
-            // {
-            //     connectionString.SslMode = SslMode.VerifyCA;
-            //     connectionString.SslCertificate =
-            //         Environment.GetEnvironmentVariable("/Users/delllin/Projects/GCP/Cert/client.pfx"); // e.g. 'certs/client.pfx'
-            // }
+            if (Environment.GetEnvironmentVariable("DB_SERVER_CA") != null)
+            {
+                connectionString.SslMode = SslMode.VerifyCA;
+                connectionString.RootCertificate = Environment.GetEnvironmentVariable("DB_SERVER_CA");
+                connectionString.SslKey = Environment.GetEnvironmentVariable("DB_CLIENT_CERT");
+                connectionString.SslPassword = Environment.GetEnvironmentVariable("DB_CLIENT_KEY");
+            }
             connectionString.Pooling = true;
             // Specify additional properties here.
             return connectionString;
