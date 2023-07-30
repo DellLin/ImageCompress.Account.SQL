@@ -17,7 +17,7 @@ public class PostgreSqlTcp
                 // Cloud Secret Manager (https://cloud.google.com/secret-manager) to help
                 // keep secrets safe.
                 // Host = Environment.GetEnvironmentVariable("INSTANCE_CONNECTION_NAME"),     // e.g. '127.0.0.1'
-                Host = "34.80.75.228",
+                Host = Environment.GetEnvironmentVariable("INSTANCE_CONNECTION_NAME"),
                 // Set Host to 'cloudsql' when deploying to App Engine Flexible environment
                 Username = Environment.GetEnvironmentVariable("DB_USER"), // e.g. 'my-db-user'
                 Password = Environment.GetEnvironmentVariable("DB_PASS"), // e.g. 'my-db-password'
