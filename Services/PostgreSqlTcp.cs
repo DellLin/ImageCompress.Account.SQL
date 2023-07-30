@@ -12,18 +12,18 @@ public class PostgreSqlTcp
                 // secure - consider a more secure solution such as
                 // Cloud Secret Manager (https://cloud.google.com/secret-manager) to help
                 // keep secrets safe.
-                Host = Environment.GetEnvironmentVariable("INSTANCE_HOST"),     // e.g. '127.0.0.1'
+                Host = Environment.GetEnvironmentVariable("INSTANCE_CONNECTION_NAME"),     // e.g. '127.0.0.1'
                 // Set Host to 'cloudsql' when deploying to App Engine Flexible environment
                 Username = Environment.GetEnvironmentVariable("DB_USER"), // e.g. 'my-db-user'
                 Password = Environment.GetEnvironmentVariable("DB_PASS"), // e.g. 'my-db-password'
                 Database = Environment.GetEnvironmentVariable("DB_NAME"), // e.g. 'my-database'
-                RootCertificate = Environment.GetEnvironmentVariable("DB_SERVER_CA"),
-                SslCertificate = Environment.GetEnvironmentVariable("DB_CLIENT_CERT"),
-                SslPassword = Environment.GetEnvironmentVariable("DB_CLIENT_KEY"),
+                // RootCertificate = Environment.GetEnvironmentVariable("DB_SERVER_CA"),
+                // SslCertificate = Environment.GetEnvironmentVariable("DB_CLIENT_CERT"),
+                // SslPassword = Environment.GetEnvironmentVariable("DB_CLIENT_KEY"),
                 // The Cloud SQL proxy provides encryption between the proxy and instance.
-                // TrustServerCertificate=true,
-                TrustServerCertificate = false,
-                SslMode = SslMode.VerifyCA,
+                // TrustServerCertificate = false,
+                // SslMode = SslMode.VerifyCA,
+                
             };
             connectionString.Pooling = true;
             // Specify additional properties here.
