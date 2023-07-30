@@ -23,25 +23,14 @@ public class PostgreSqlTcp
                 Username = Environment.GetEnvironmentVariable("DB_USER"), // e.g. 'my-db-user'
                 Password = Environment.GetEnvironmentVariable("DB_PASS"), // e.g. 'my-db-password'
                 Database = Environment.GetEnvironmentVariable("DB_NAME"), // e.g. 'my-database'
-                // RootCertificate = Environment.GetEnvironmentVariable("DB_SERVER_CA"),
-                // SslCertificate = Environment.GetEnvironmentVariable("DB_CLIENT_CERT"),
-                // SslPassword = Environment.GetEnvironmentVariable("DB_CLIENT_KEY"),
+                RootCertificate = Environment.GetEnvironmentVariable("DB_SERVER_CA"),
+                SslCertificate = Environment.GetEnvironmentVariable("DB_CLIENT_CERT"),
+                SslKey = Environment.GetEnvironmentVariable("DB_CLIENT_KEY"),
                 // The Cloud SQL proxy provides encryption between the proxy and instance.
                 // TrustServerCertificate = false,
-                SslMode = SslMode.Disable,
+                SslMode = SslMode.VerifyCA,
                 
             };
-             // [END cloud_sql_postgres_dotnet_ado_connect_tcp]
-            // For deployments that connect directly to a Cloud SQL instance without
-            // using the Cloud SQL Proxy, configuring SSL certificates will ensure the
-            // connection is encrypted.
-            if (Environment.GetEnvironmentVariable("DB_SERVER_CA") != null)
-            {
-                connectionString.SslMode = SslMode.VerifyCA;
-                connectionString.RootCertificate = Environment.GetEnvironmentVariable("DB_SERVER_CA");
-                connectionString.SslKey = Environment.GetEnvironmentVariable("DB_CLIENT_CERT");
-                connectionString.SslPassword = Environment.GetEnvironmentVariable("DB_CLIENT_KEY");
-            }
             connectionString.Pooling = true;
             // Specify additional properties here.
             return connectionString;
